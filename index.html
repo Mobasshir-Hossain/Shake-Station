@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Shake Station: a Mars survival game about power budgeting and mission decisions.">
+<title>Shake Station</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<g id="base">
+<path d="M0 205 L90 120 L150 170 L230 95 L330 185 L420 125 L520 190 L610 110 L720 180 L800 140 L800 340 L0 340Z" fill="#a8461f"/>
+<path d="M0 235 L110 165 L200 215 L300 160 L420 225 L560 170 L680 220 L800 185 L800 340 L0 340Z" fill="#c1582a"/>
+<rect x="0" y="262" width="800" height="90" fill="#d0642d"/><ellipse cx="400" cy="300" rx="420" ry="30" fill="#b9501f" opacity=".6"/>
+<g stroke="#6b3a1e" stroke-width="3" fill="none"><path d="M600 262 L616 130 L632 262 M606 220 L626 220 M609 180 L623 180 M616 130 L616 112"/></g>
+<circle cx="616" cy="108" r="6" fill="#ff4d3d"/>
+<path d="M300 268 A62 62 0 0 1 424 268Z" fill="#efe0cc" stroke="#b79d80" stroke-width="3"/><rect x="340" y="232" width="26" height="36" rx="5" fill="#ff9f3d"/><rect x="376" y="238" width="30" height="14" rx="4" fill="#7fd6ff"/>
+<path d="M446 268 A78 70 0 0 1 602 268Z" fill="#bfeff0" fill-opacity=".55" stroke="#e9ffff" stroke-width="3"/>
+<g fill="#4fcf5a"><circle cx="480" cy="250" r="12"/><circle cx="510" cy="244" r="14"/><circle cx="545" cy="250" r="12"/><circle cx="572" cy="256" r="9"/><circle cx="495" cy="262" r="8"/></g>
+<g fill="#2b63d9" stroke="#bcd6ff" stroke-width="2"><path d="M640 278 L656 244 L720 244 L706 278Z"/><path d="M712 278 L728 244 L790 244 L776 278Z"/></g>
+<path d="M700 200 q35 -10 52 18 q-30 14 -52 -18z" fill="#e9e9ef" stroke="#9aa" stroke-width="2"/><path d="M728 214 L722 262" stroke="#778" stroke-width="4"/>
+</g>
+<g id="pipbody"><rect x="-26" y="30" width="52" height="80" rx="20" fill="#f4f7ff"/><rect x="-14" y="52" width="28" height="22" rx="6" fill="#3d7bd6"/><ellipse cx="-34" cy="64" rx="10" ry="24" fill="#f4f7ff"/><ellipse cx="34" cy="64" rx="10" ry="24" fill="#f4f7ff"/><rect x="-24" y="104" width="20" height="28" rx="8" fill="#f4f7ff"/><rect x="4" y="104" width="20" height="28" rx="8" fill="#f4f7ff"/><rect x="-24" y="124" width="20" height="9" rx="4" fill="#9fb0d8"/><rect x="4" y="124" width="20" height="9" rx="4" fill="#9fb0d8"/><circle cx="0" cy="0" r="42" fill="#fff"/><ellipse cx="0" cy="3" rx="33" ry="27" fill="#0d1430"/><ellipse cx="-18" cy="-10" rx="8" ry="4" fill="#fff" opacity=".25"/></g>
+</defs></svg>
+
+<div class="wrap">
+ <div class="top">
+  <div class="pill">📅 <span id="dayT">Day 1</span></div>
+  <div class="pill"><span class="coin"></span><span id="coinT">0</span></div>
+  <div class="fc"><div id="fcT"></div><div id="fcN"></div></div>
+ </div>
+ <div class="stage" id="stage">
+  <svg class="scene" viewBox="0 0 800 340" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Mars outpost with astronaut Pip">
+   <defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6b87b"/><stop offset="1" stop-color="#e58a4c"/></linearGradient></defs>
+   <rect width="800" height="340" fill="url(#sk)"/>
+   <circle id="sun" cx="620" cy="60" r="46" fill="#fff4b8" opacity=".9"/>
+   <use href="#base"/>
+   <g id="pip" transform="translate(210,150)"><use href="#pipbody"/><g id="eyes" stroke="#37e3ff" stroke-width="5" stroke-linecap="round" fill="none"></g></g>
+   <rect id="veil" width="800" height="340" fill="#b3401a" opacity="0"/><rect id="red" width="800" height="340" fill="#d3201a" opacity="0"/>
+   <g id="sp"></g>
+  </svg>
+  <div class="banner" id="banner"></div>
+  <div class="bubble" id="bubble"></div>
+  <div class="post" id="post"></div>
+ </div>
+ <div class="cards" id="cards"></div>
+ <div class="acts">
+  <button class="go" id="endBtn">Shake &amp; end day</button>
+  <button class="sec" id="demoBtn">Watch a Failed Mission</button>
+  <button class="sec" id="howBtn">How to Play</button>
+ </div>
+ <section class="lab" aria-labelledby="labT">
+  <h2 id="labT">Mission Lab: the real engineering behind the game</h2>
+  <p>Every part of Shake Station is a simplified version of a real mission decision.</p>
+  <table>
+   <thead><tr><th scope="col">Game mechanic</th><th scope="col">Real engineering idea</th></tr></thead>
+   <tbody>
+    <tr><td>🪙🔋 Sun Coins and battery</td><td>Power budgeting and energy storage<small>Save coins before a storm, like an outpost saving battery power.</small></td></tr>
+    <tr><td>🛡️☀️ Shield versus shine</td><td>Protection versus power<small>Coins spent on the shield can't run the greenhouse.</small></td></tr>
+    <tr><td>⬛ Black Box replay</td><td>Cause-and-effect analysis, like real mission reviews<small>Engineers trace a failure back to the decision behind it.</small></td></tr>
+   </tbody>
+  </table>
+ </section>
+</div>
+
+<div class="ov on" id="title"><div class="tw">
+ <div class="hd"><h1><span class="a">Shake</span><span class="b">Station 🚀</span></h1><p>shake the globe, survive the sky.</p></div>
+ <svg viewBox="0 0 460 380" role="img" aria-label="Snow globe with a Mars outpost"><defs><clipPath id="dc"><path d="M40 290 A190 190 0 0 1 420 290Z"/></clipPath><linearGradient id="bs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b4a8c"/><stop offset="1" stop-color="#121a44"/></linearGradient></defs>
+  <g clip-path="url(#dc)"><rect x="0" y="80" width="460" height="230" fill="#e58a4c"/><g transform="translate(20,110) scale(.55)"><use href="#base"/></g></g>
+  <g transform="translate(135,215) scale(.85)"><use href="#pipbody"/><g stroke="#37e3ff" stroke-width="5" stroke-linecap="round" fill="none"><path d="M-14 0 q6 -9 12 0 M2 0 q6 -9 12 0"/></g></g>
+  <path d="M40 290 A190 190 0 0 1 420 290Z" fill="#cfe9ff" fill-opacity=".14" stroke="#cfe9ff" stroke-width="4"/><path d="M80 200 Q100 130 170 105" stroke="#fff" stroke-width="7" stroke-linecap="round" fill="none" opacity=".4"/>
+  <path d="M10 300 Q230 270 450 300 L430 350 Q230 375 30 350Z" fill="url(#bs)" stroke="#6a7bd0" stroke-width="3"/><text x="230" y="338" text-anchor="middle" fill="#9fb0d8" font-family="Fredoka,sans-serif" font-size="20" letter-spacing="3">MARS</text></svg>
+ <div class="tb"><button class="go" id="playBtn">▶ Play</button><button class="sec" id="howBtn2">ⓘ How to Play</button></div>
+</div></div>
+
+<div class="ov" id="how" style="background:rgba(4,8,24,.9)"><div class="modal"><h2>How to Play</h2>
+<p>Pip lives in a Mars outpost inside a snow globe. The Sun pays you <b>Sun Coins</b> every day. Spend them on Oxygen, Greenhouse, Heat and Shield to keep Pip alive for 10 days.</p>
+<p>There are never enough coins for everything. <b>Unspent coins are saved in the battery</b> (up to 12), so save before a storm. Watch the forecast!</p>
+<p>When Pip fails, the <b>Black Box Replay</b> shows the chain of causes.</p>
+<p style="font-size:14px;opacity:.85"><b>About the science:</b> events are inspired by real Mars dust storms and solar flares (NASA tracks flares in its DONKI database). Numbers here are simplified for gameplay and are not real measurements.</p>
+<button class="go" id="howClose" style="width:100%;margin-top:8px">Got it</button></div></div>
+<div class="ov" id="end" style="background:rgba(4,8,24,.88)"><div class="modal" id="endM"></div></div>
+
+<script src="script.js"></script></body></html>
